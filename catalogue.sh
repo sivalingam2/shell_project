@@ -1,2 +1,4 @@
 source common.sh
+component=catalogue
+schema_type=mongodb
 catalogue_part

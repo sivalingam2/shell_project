@@ -17,4 +17,8 @@ echo -e "\e[32m >>>> change the directory and unzip the content >>>>>\e[0m"
 cd /usr/share/nginx/html &>>${log}
 unzip /tmp/frontend.zip &>>${log}
 exit_status
-restart_service
+   echo -e "\e[32m >>>> start the servive >>>>>\e[0m"
+   systemctl daemon-reload &>>${log}
+   systemctl enable nginx &>>${log}
+   systemctl restart nginx &>>${log}
+   exit_status
