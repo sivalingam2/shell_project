@@ -28,7 +28,7 @@ catalogue_part () {
   useradd roboshop &>>${log}
   mkdir /app &>>${log}
   exit_status
-    echo -e "\e[32m >>>> download the content   >>>>>\e[0m"
+  echo -e "\e[32m >>>> download the content   >>>>>\e[0m"
   curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue.zip &>>${log}
   cd /app
   unzip /tmp/catalogue.zip
