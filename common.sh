@@ -68,11 +68,12 @@ schema_setup () {
   echo -e "\e[32m >>>> install maven package <<<< \e[0m"
   dnf install maven -y &>>${log}
   exit_status
+    all_components
   echo -e "\e[32m >>>> install clean package <<<< \e[0m"
   mvn clean package  &>>${log}
   exit_status
   mv target/${component}-1.0.jar ${component}.jar
-  all_components
+
   schema_setup
   restart_service
  }
