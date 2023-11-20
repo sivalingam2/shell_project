@@ -13,7 +13,7 @@ catalogue_part () {
   cp catalogue.service /etc/systemd/system/catalogue.service &>>${log}
   exit_status
   echo -e "\e[32m >>>> copy mongo repo files >>>>>\e[0m"
-  cp mongo.repo /etc/yum.repos.d/maongo.repo &>>${log}
+  cp mongo.repo /etc/yum.repos.d/mongo.repo &>>${log}
    exit_status
   echo -e "\e[32m >>>> disable nodejs  >>>>>\e[0m"
   dnf module disable nodejs -y &>>${log}
