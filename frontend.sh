@@ -3,7 +3,7 @@ echo -e "\e[32m >>>> install nginx >>>> \e[0m"
 dnf install nginx -y &>>${log}
 exit_status
 echo -e "\e[32m >>>> copy files >>>>>\e[0m"
- cp frontend.confi /etc/nginx/default.d/roboshop.conf &>>${log}
+ c frontend.confi /etc/nginx/default.d/roboshop.conf &>>${log}
  exit_status
 
 echo -e "\e[32m >>>> remove old content >>>>>\e[0m"
