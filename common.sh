@@ -51,7 +51,7 @@ schema_setup () {
     dnf install mongodb-org-shell -y &>>${log}
     exit_status
     echo -e "\e[32m>>>>>>>>>>>>  Load Schema   <<<<<<<<<<<<\e[0m"
-    mongo --host mongodb.sivadevops22.online </app/schema/catalogue.js &>>${log}
+    mongo --host mongodb.sivadevops22.online </app/schema/${component}.js &>>${log}
     exit_status
   fi
   if [ "${schema_type}" == "mysql" ]; then
@@ -59,7 +59,7 @@ schema_setup () {
     dnf install mysql -y &>>${log}
     exit_status
      echo -e "\e[32m >>>> install load schema <<<< \e[0m"
-    mysql -h mysql.sivadevops22.online -uroot -pRoboShop@1 < /app/schema/shipping.sql &>>${log}
+    mysql -h mysql.sivadevops22.online -uroot -pRoboShop@1 < /app/schema/${component}.sql &>>${log}
     exit_status
   fi
 }
