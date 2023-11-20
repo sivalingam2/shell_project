@@ -47,29 +47,29 @@ all_components () {
 }
 schema_setup () {
   if [ "${schema_type}" == "mongodb" ]; then
-      echo -e "\e[31m >>>> install mongodb <<<< \e[0m"
+      echo -e "\e[32m >>>> install mongodb <<<< \e[0m"
     dnf install mongodb-org-shell -y &>>${log}
     exit_status
-    echo -e "\e[36m>>>>>>>>>>>>  Load Schema   <<<<<<<<<<<<\e[0m"
+    echo -e "\e[32m>>>>>>>>>>>>  Load Schema   <<<<<<<<<<<<\e[0m"
     mongo --host mongodb.sivadevops22.online </app/schema/catalogue.js &>>${log}
     exit_status
   fi
   if [ "${schema_type}" == "mysql" ]; then
-      echo -e "\e[31m >>>> install mysql client <<<< \e[0m"
+      echo -e "\e[32m >>>> install mysql client <<<< \e[0m"
     dnf install mysql -y &>>${log}
     exit_status
-     echo -e "\e[31m >>>> install load schema <<<< \e[0m"
+     echo -e "\e[32m >>>> install load schema <<<< \e[0m"
     mysql -h mysql.sivadevops22.online -uroot -pRoboShop@1 < /app/schema/shipping.sql &>>${log}
     exit_status
   fi
 }
 
  shipping_part () {
-  echo -e "\e[31m >>>> install maven package <<<< \e[0m"
+  echo -e "\e[32m >>>> install maven package <<<< \e[0m"
   dnf install maven -y &>>${log}
   exit_status
   cd /app
-  echo -e "\e[31m >>>> install clean package <<<< \e[0m"
+  echo -e "\e[32m >>>> install clean package <<<< \e[0m"
   mvn clean package  &>>${log}
   exit_status
   mv target/${component}-1.0.jar ${component}.jar
@@ -78,16 +78,16 @@ schema_setup () {
   restart_service
  }
  dispatch_part () {
-   echo -e "\e[31m >>>> golang installation <<<< \e[0m"
+   echo -e "\e[32m >>>> golang installation <<<< \e[0m"
    dnf install golang -y  &>>${log}
    exit_status
    all_components
-    echo -e "\e[31m >>>> download dependencies <<<< \e[0m"
+    echo -e "\e[32m >>>> download dependencies <<<< \e[0m"
    cd /app  &>>${log}
    go mod init dispatch  &>>${log}
    go get  &>>${log}
       exit_status
-      echo -e "\e[31m >>>> building the software <<<< \e[0m"
+      echo -e "\e[32m >>>> building the software <<<< \e[0m"
      go build  &>>${log}
     exit_status
    restart_service
