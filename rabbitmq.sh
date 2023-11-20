@@ -1,3 +1,4 @@
+source common.sh
 rabbitmq_password= $1
 read -s rabbitmq_password
 if [ -z "${rabbitmq_password}" ]; then
