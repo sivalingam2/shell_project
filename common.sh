@@ -68,7 +68,6 @@ schema_setup () {
   echo -e "\e[32m >>>> install maven package <<<< \e[0m"
   dnf install maven -y &>>${log}
   exit_status
-  cd /app
   echo -e "\e[32m >>>> install clean package <<<< \e[0m"
   mvn clean package  &>>${log}
   exit_status
