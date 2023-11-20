@@ -1,3 +1,4 @@
+echo "date of storing files: ${DATE}"
 echo -e "\e[31m >>>> install repo files \e[0m"
 dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y &>>${log}
 exit_status

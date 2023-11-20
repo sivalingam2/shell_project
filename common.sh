@@ -1,4 +1,5 @@
 log=/tmp/logs.file
+DATE=$(date +%F)
 exit_status () {
  if [ $? -eq 0 ]; then
    echo -e  "\e[32m success \e[0m"
@@ -7,6 +8,7 @@ else
 fi
 }
 catalogue_part () {
+  echo "date of storing files: ${DATE}"
   echo -e "\e[32m >>>> copy the catalogue service >>>>>\e[0m"
   cp catalogue.service /etc/systemd/system/catalogue.service &>>${log}
   exit_status

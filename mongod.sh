@@ -1,4 +1,5 @@
 source common.sh
+  echo "date of storing files: ${DATE}"
 echo "\e[32m >>>> install mongodb \e[0m"
 dnf install mongodb-org -y &>>${log}
 exit_status
