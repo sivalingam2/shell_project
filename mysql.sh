@@ -1,3 +1,4 @@
+source common.sh
 mysql_password=$1
 read -s mysql_password
 if [ -z "${mysql_password}" ]; then
