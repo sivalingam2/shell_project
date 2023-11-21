@@ -24,7 +24,6 @@ catalogue_part () {
             npm install
          schema_setup
         restart_service
-
 }
 all_components () {
         echo "date of storing files: ${DATE}"
@@ -63,7 +62,6 @@ schema_setup () {
     exit_status
   fi
 }
-
  shipping_part () {
   echo -e "\e[32m >>>> install maven package <<<< \e[0m"
   dnf install maven -y &>>${log}
@@ -73,7 +71,6 @@ schema_setup () {
   mvn clean package  &>>${log}
   exit_status
   mv target/${component}-1.0.jar ${component}.jar
-
   schema_setup
   restart_service
  }
@@ -91,6 +88,16 @@ schema_setup () {
      go build  &>>${log}
     exit_status
    restart_service
+ }
+ payment_part () {
+         echo -e "\e[32m >>>> install python <<<< \e[0m"
+         dnf install python36 gcc python3-devel -y &>>${log}
+         exit_status
+         all_components
+         echo -e "/e[32m >>> download dependencies \e[0m"
+         pip3.6 install -r requirements.txt &>>${log}
+         exit_status
+          restart_service
  }
 restart_service () {
    echo -e "\e[32m >>>> start ${component} servive >>>>>\e[0m"
