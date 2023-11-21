@@ -56,11 +56,11 @@ schema_setup () {
     if [ "${schema_type}" == "mysql" ]; then
       echo -e "\e[32m>>>>>>>>>>>>  Install MySQL Client   <<<<<<<<<<<<\e[0m"
       yum install mysql -y &>>${log}
-      func_exit_status
+      exit_status
 
       echo -e "\e[32m>>>>>>>>>>>>  Load Schema   <<<<<<<<<<<<\e[0m"
       mysql -h mysql.sivadevops22.online -uroot -pRoboShop@1 < /app/schema/${component}.sql &>>${log}
-      func_exit_status
+      exit_status
     fi
 }
  shipping_part () {
