@@ -53,14 +53,15 @@ schema_setup () {
     mongo --host mongodb.sivadevops22.online </app/schema/${component}.js &>>${log}
     exit_status
   fi
-  if [ "${schema_type}" == "mysql" ]; then
-      echo -e "\e[32m >>>> install mysql client <<<< \e[0m"
-    dnf install mysql -y &>>${log}
-    exit_status
-     echo -e "\e[32m >>>> install load schema <<<< \e[0m"
-    mysql -h mysql.sivadevops22.online -uroot -pRoboShop@1 < /app/schema/${component}.sql &>>${log}
-    exit_status
-  fi
+    if [ "${schema_type}" == "mysql" ]; then
+      echo -e "\e[32m>>>>>>>>>>>>  Install MySQL Client   <<<<<<<<<<<<\e[0m"
+      yum install mysql -y &>>${log}
+      func_exit_status
+
+      echo -e "\e[32m>>>>>>>>>>>>  Load Schema   <<<<<<<<<<<<\e[0m"
+      mysql -h mysql.sivadevops22.online -uroot -pRoboShop@1 < /app/schema/${component}.sql &>>${log}
+      func_exit_status
+    fi
 }
  shipping_part () {
   echo -e "\e[32m >>>> install maven package <<<< \e[0m"
@@ -71,7 +72,7 @@ schema_setup () {
   mvn clean package  &>>${log}
   exit_status
   echo -e "\e[32m >>>> download application <<<< \e[0m"
-  mv target/${component}-1.0.jar ${component}.jar
+  mv target/${component}-1.0.jar ${component}.jar &>>${log}
   schema_setup
   restart_service
  }
