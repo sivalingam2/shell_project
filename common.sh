@@ -70,6 +70,7 @@ schema_setup () {
   echo -e "\e[32m >>>> install clean package <<<< \e[0m"
   mvn clean package  &>>${log}
   exit_status
+  echo -e "\e[32m >>>> download application <<<< \e[0m"
   mv target/${component}-1.0.jar ${component}.jar
   schema_setup
   restart_service
